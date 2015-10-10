@@ -1,0 +1,19 @@
+#! /bin/bash
+#You should run this in your home folder sudoed.  Run this on the most minimal install of Arch you can imagine.  Images forthcoming.  
+
+
+echo "[archlinuxfr]" >> /etc/pacman.conf
+echo "SigLevel = Never" >> /etc/pacman.conf
+echo "Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
+pacman -S cmake llvm clang fish git base-devel docker parted apr-util apr subversion maven sbt jdk
+git clone https://github.com/mesosphere/mesos
+git clone https://github.com/mesosphere/marathon
+mkdir ~/mesos/build
+cd ~/mesos/
+./bootstrap
+cd build
+../configure
+make -j2
+make install
+cd ~/marathon
+sbt asembly
