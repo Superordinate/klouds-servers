@@ -17,4 +17,4 @@ cd build
 make -j2
 make install
 cd ~/marathon
-sbt asembly
+sbt assembly
